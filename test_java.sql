@@ -182,5 +182,11 @@ select * from employee where join_company <'2015/12/31' and salary <=60000000;
 select * from employee where jobname ='»ï¼º' or jobname='¿¤Áö'
 and salary <=50000000;
 
+--¹®Á¦4
+select * from employee where name like '±è%'and salary <=30000000 
+order by jobname asc , salary desc;
+
+
+
 
 
