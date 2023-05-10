@@ -73,7 +73,7 @@ create table test_char(
 insert into test_char values('1','1');
 select lengthb(ch), lengthb(vch) from test_char;
 
---문제
+--문제 1
 
 create table employee (
     name varchar2(15),
@@ -153,7 +153,7 @@ insert into employee values('짜투리',1850000,'애플','2018/04/03');
 insert into employee values('이승기',1900000,'엘지','2018/01/01');
 insert into employee values('기차길',1790000,'SK','2018/05/02');
 insert into employee values('길거리',2700000,'샤오미','2016/07/20');
---문제 해결
+--문제 2 
 select * from employee;
 
 select * from employee where salary * 12 >=100000000;
@@ -161,6 +161,26 @@ select * from employee where salary * 12 >=100000000;
 select name, join_company from employee where join_company < '2015/01/01';
 
 select * from employee where salary >=2800000 and salary<=3000000;
+select * from employee where salary  between 2800000 and 3000000;
+
+--like절
+select *from employee where name like '김%';
+select *from employee where name like '%민';
+--'이'라는 단어가 들어가면 앞뒤 상관없이 가져오기
+select *from employee where name like '%이%';
+
+--정렬
+select * from employee order by join_company desc; --내림차순
+select * from employee order by join_company asc; --오름차순
+--여러 조건 정렬
+select * from employee order by join_company asc, name desc;
+
+
+--문제3
+select * from employee where join_company <'2015/12/31' and salary <=60000000;
+
+select * from employee where jobname ='삼성' or jobname='엘지'
+and salary <=50000000;
 
 
 
