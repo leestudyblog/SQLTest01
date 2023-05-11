@@ -157,7 +157,7 @@ select N.id, N.CLASS, sum(L.score), avg(L.score) from
         testName N inner join testlesson L on N.id=L.id group by N.id,N.CLASS order by class asc;
 
 
-
+commit;
 
 
 
