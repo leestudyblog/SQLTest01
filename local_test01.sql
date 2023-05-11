@@ -99,16 +99,86 @@ select class, sum(score) from test_class
 group by class having sum(score)>60; --총 점 60이상 의 그룹을 나타냄
 
 --문제 3 답안
-select class, count(class) from test_class group by class;
+select class, count(*) from test_class group by class;
 
 select class, avg(score) from test_class group by class order by avg(score) desc;
 
 select class, max(score), min(score) from test_class group by class; 
---**내림차순, 오름 차순 사용 시 무조건 order by [조건] desc & asc;
+--**내림차순, 오름 차순 사용 시 무조건 order by [조건] desc & a
 --강사님 답안
 select class, count(*) from testClass group by class;
 
 select class, avg(score) from testClass  group by class order by avg(score) desc;
 
 select class, max(score), min(score) from testClass group by class;
+
+--예제 3
+
+create table testName(id varchar2(20), class varchar2(20));
+insert into testName values('홍길동','A반');
+insert into testName values('김개똥','B반');
+insert into testName values('고길동','C반');
+
+create table testLesson(id varchar2(20), lesson varchar2(20), score number);
+insert into testLesson values('홍길동','python',80);
+insert into testLesson values('홍길동','java',90);
+insert into testLesson values('홍길동','c언어',70);
+insert into testLesson values('김개똥','server2012',70);
+insert into testLesson values('김개똥','linux',90);
+insert into testLesson values('고길동','jsp',100);
+
+select * from testName;
+select * from testLesson;
+--테이블 함께 가져오기
+select * from testName, testLesson; --보기 힘듦
+--별칭 생성(* 모든 내용 조회)
+select N.*, L.lesson, L.score from testName N, testLesson L;
+
+--inner join :아이디가 일치하는 것끼리 합쳐서 조회
+select * from testName N inner join testLesson L on N.id =L.id;
+select N.*, L.lesson, L.score from testName N 
+inner join testLesson L on N.id =L.id;
+
+--문제 4 답안
+select N.id, N.class, L.lesson,L.score from 
+testName N inner join testLesson L on N.id =L.id and N.id='홍길동';
+
+select N.id, N.class , sum(L.score), avg(L.score) from 
+    testName N inner join testLesson L on N.id=L.id group by N.id,N.class order by class asc;
+
+
+
+--강사님 답안
+
+select N.id,N.class,L.lesson,L.score from 
+    testName N inner join testlesson L on N.id=L.id and N.id='홍길동';
+
+select N.id, N.CLASS, sum(L.score), avg(L.score) from 
+        testName N inner join testlesson L on N.id=L.id group by N.id,N.CLASS order by class asc;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
