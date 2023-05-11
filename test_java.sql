@@ -186,6 +186,7 @@ and salary <=50000000;
 select * from employee where name like '±è%'and salary <=30000000 
 order by jobname asc , salary desc;
 
+commit;
 
 
 
