@@ -201,5 +201,19 @@ select M.m_id,M.m_name,M.m_addr, sum(G.g_price_sum) from member M inner join goo
 
 
 --오후 수업
+create table newst(
+id varchar2(20),
+name varchar2(20),
+age number,
+primary key(id)
+);
 
+insert into newst values('111','Hong',23);
+insert into newst values('222','Kim',20);
+insert into newst values('333','Go',30);
 
+commit;
+
+select * from newst;
+
+select * from newst where id = '111';
